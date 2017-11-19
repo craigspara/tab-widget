@@ -1,0 +1,72 @@
+{
+  "name": "node-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "pm2 start ./bin/www --watch",
+    "poststart": "pm2 logs",
+    "stop": "pm2 delete all && pm2 flush",
+    "test": "mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
+    "test2": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
+    "coverage": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --require babel-polyfill --require babel-register",
+    "webpack": "webpack -wd",
+    "build": "babel src -d build"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          },
+          "test": {
+            "plugins": [
+              "istanbul"
+            ]
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  },
+  "dependencies": {
+    "babel-cli": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-preset-stage-3": "6.24.1",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.2",
+    "istanbul": "0.4.5",
+    "morgan": "~1.9.0",
+    "pm2": "2.7.2",
+    "serve-favicon": "~2.4.5",
+    "webpack": "3.8.1"
+  },
+  "devDependencies": {
+    "babel-plugin-istanbul": "4.1.5",
+    "chai": "4.1.2",
+    "cheerio": "1.0.0-rc.2",
+    "coveralls": "3.0.0",
+    "jsdom": "11.3.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "4.0.1",
+    "node-sass-middleware": "0.11.0",
+    "nyc": "11.3.0",
+    "sinon": "4.1.2"
+  }
+}
