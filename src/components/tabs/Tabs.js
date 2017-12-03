@@ -40,13 +40,13 @@ class Tabs {
     this.tablist.addEventListener('click', this.clickEventListener);
     this.tablist.addEventListener('keydown', this.keydownEventListener);
     this.tablist.addEventListener('keyup', this.keyupEventListener);
-    // this.tablist.addEventListener('focus', this.focusEventHandler)
+    this.tabSection.addEventListener('focus', this.focusEventHandler)
   }
 
   clickEventListener(event)  {
     const tab = event.target;
     this.activateTab(tab);
-    this.reportFocusStatus(event);
+    // this.reportFocusStatus(event);
   };
 
   // Handle keydown on tabs
@@ -86,7 +86,7 @@ class Tabs {
         this.determineOrientation(event);
         break;
     }
-    this.reportFocusStatus(event);
+    // this.reportFocusStatus(event);
   }
 
   focusEventHandler(event) {
@@ -209,8 +209,9 @@ class Tabs {
   // TODO: Trap focus in active panel if focusable elements are present
   // debugging
   reportFocusStatus(event) {
-    console.info(`activeElement: ${document.activeElement}`);
-      if (event) {
+    // console.info(`activeElement: ${document.activeElement}`);
+    console.dir(document.activeElement);
+      /*if (event) {
         console.info(event);
       }
       for (const tab of this.tabs) {
@@ -223,7 +224,7 @@ class Tabs {
         console.log(panel);
           console.info(`panel ${panel.id}: aria-expanded: ${panel.getAttribute('aria-expanded')}`);
       }
-      console.info(`_________________`);
+      console.info(`_________________`);*/
   }
 
   // debugging: Add to function to report focused tab and panel

@@ -1,5 +1,5 @@
 {
-  "name": "node-express",
+  "name": "tab-widget",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
     "test2": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
     "coverage": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --require babel-polyfill --require babel-register",
+    "compile": "node-sass ./src/stylesheets -o ./public/stylesheets -w",
     "webpack": "webpack -wd",
     "build": "babel src -d build"
   },
@@ -53,6 +54,7 @@
     "express": "~4.16.2",
     "istanbul": "0.4.5",
     "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0",
     "pm2": "2.7.2",
     "serve-favicon": "~2.4.5",
     "webpack": "3.8.1"
@@ -65,8 +67,12 @@
     "jsdom": "11.3.0",
     "jsdom-global": "3.0.2",
     "mocha": "4.0.1",
-    "node-sass-middleware": "0.11.0",
+    "node-sass": "4.7.2",
     "nyc": "11.3.0",
+    "postcss": "6.0.14",
+    "postcss-cli": "4.1.1",
+    "postcss-cssnext": "3.0.2",
+    "sass": "1.0.0-beta.3",
     "sinon": "4.1.2"
   }
 }

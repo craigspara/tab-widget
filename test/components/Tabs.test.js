@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import Tabs from '../../src/components/Tabs';
+import Tabs from '../../src/components/tabs/Tabs';
 import sinon from 'sinon';
 const jsdom = require("jsdom");
 
