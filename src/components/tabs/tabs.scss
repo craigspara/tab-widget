@@ -1,10 +1,9 @@
+@import '../generic/variables';
+
 $color: #fff;
 
 div {
   width: 100%;
   color: $color;
+  background-color: var(--blue);
   }
-
-.org {
-  color: $color;
-}
