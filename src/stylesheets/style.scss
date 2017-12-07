@@ -1,3 +1,4 @@
-@import "../components/generic/variables";
-@import "../components/generic/generic";
+@import "../../node_modules/normalize-scss/sass/normalize/import-now";
+@import "../components/generic/_variables";
+@import "../components/generic/_generic";
 @import "../components/tabs/tabs.scss";

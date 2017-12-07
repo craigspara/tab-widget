@@ -72,6 +72,7 @@
     "jsdom-global": "3.0.2",
     "mocha": "4.0.1",
     "node-sass": "4.7.2",
+    "normalize-scss": "7.0.0",
     "nyc": "11.3.0",
     "postcss": "6.0.14",
     "postcss-browser-reporter": "0.5.0",
