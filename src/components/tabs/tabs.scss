@@ -1,9 +1,88 @@
 @import '../generic/variables';
 
-$color: #fff;
-
-div {
+.tabs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  //width: 100vw;
+}
+.tabs, .tabs * {
+  box-sizing: border-box;
+}
+[role="tablist"] {
   width: 100%;
-  color: $color;
-  background-color: var(--blue);
-  }
+  order: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+}
+[role="tab"] {
+  flex: 1 0 auto;
+  padding: 1em;
+  margin-right: 0.25em;
+  background-color: var(--inactive-tab-background);
+  border-top: 1px solid var(--inactive-tab-background);
+  border-right: 1px solid var(--inactive-tab-background);
+  border-bottom: 1px solid var(--inactive-tab-background);
+  border-left: 1px solid var(--inactive-tab-background);
+  color: var(--active-tab-background);
+}
+[role="tab"]:last-child {
+  margin-right: auto;
+}
+[role="tab"][aria-selected="true"] {
+  background-color: var(--active-tab-background);
+  border-bottom: 1px solid var(--active-tab-background);
+  color: var(--inactive-tab-background);
+}
+
+[type="button"][role="tab"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+  z-index: auto;
+}
+[type="button"][role="tab"]:focus {
+  z-index: 1;
+}
+
+.panel-wrapper {
+  position: relative;
+  //display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  border-top: none;
+  border-right: 1px solid var(--inactive-tab-background);
+  border-bottom: 1px solid var(--inactive-tab-background);
+  border-left: 1px solid var(--inactive-tab-background);
+}
+
+
+
+[role="tabpanel"] {
+  //position: absolute;
+  width: 100%;
+  order: 1;
+  flex: 1 0 auto;
+  padding: var(--default-tabpanel-padding);
+}
+[role="tabpanel"][aria-expanded="true"] {
+  background-color: var(--active-panel-background);
+  order: 0;
+}
+[role="tabpanel"][aria-expanded="true"]:focus {
+  outline: -webkit-focus-ring-color auto 5px;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+}
+.tabs [hidden] {
+  display: block;
+  visibility: hidden;
+}

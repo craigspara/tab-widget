@@ -1,6 +1,10 @@
 {
   "name": "tab-widget",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "Craig Spara",
+  "email": "craig@craigspara.com",
+  "repository": "",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "pm2 start ./bin/www --watch",
