@@ -1,4 +1,4 @@
-import Tabs from './components/Tabs';
+import Tabs from './components/tabs/Tabs';
 
 const root = document.getElementById('root');
 const template = `<div><h1>Accessible Tabs</h1>
@@ -9,7 +9,8 @@ const template = `<div><h1>Accessible Tabs</h1>
                 <button type="button" role="tab"
                     aria-selected="true"
                     aria-controls="panel1"
-                    id="tab1">
+                    id="tab1"
+                    tabindex="0">
                     Tab 1
                 </button>
                 <button type="button" role="tab"
@@ -28,6 +29,7 @@ const template = `<div><h1>Accessible Tabs</h1>
                     Tab 3
                 </button>
             </div>
+            <div class="panel-wrapper">
             <div tabindex="0"
                 role="tabpanel"
                 id="panel1"
@@ -46,6 +48,18 @@ const template = `<div><h1>Accessible Tabs</h1>
                 <p>
                     Agnes Caroline Thaarup Obel is a Danish singer/songwriter. Her first album, Philharmonics, was released by <a href="#">PIAS Recordings</a> on 4 October 2010 in Europe. Philharmonics was certified gold in June 2011 by the <a href="#">Belgian Entertainment Association (BEA)</a> for sales of 10,000 Copies.
                 </p>
+                <form action="#">
+                  <p>
+                    <label for="firstname">First name</label>
+                    <input type="text" id="firstname" />
+                  </p>
+                  <p>
+                    <label for="lastname">First name</label>
+                    <input type="text" id="lastname" />
+                  </p>
+                  
+                  <button tabindex="0">Send</button>
+                </form>
             </div>
             <div tabindex="0"
                 role="tabpanel"
@@ -60,6 +74,7 @@ const template = `<div><h1>Accessible Tabs</h1>
                     A complex complex complex.
                 </p>
             </div>
+            </div>
         </section>
         <div>
             <p>Lorum ipsum <a href="#">link to somewhere</a>sit dolar</p>
@@ -70,7 +85,8 @@ const template = `<div><h1>Accessible Tabs</h1>
 
         <section class="tabs">
             <div role="tablist"
-                aria-orientation="vertical">
+                aria-orientation="vertical"
+                class="bottom-tabs">
                 <button role="tab"
                     aria-selected="true"
                     aria-controls="nils-tab2"
@@ -93,6 +109,7 @@ const template = `<div><h1>Accessible Tabs</h1>
                     Joke
                 </button>
             </div>
+            <div class="panel-wrapper">
             <div tabindex="0"
                 role="tabpanel"
                 id="nils-tab2"
@@ -125,8 +142,10 @@ const template = `<div><h1>Accessible Tabs</h1>
                     A complex complex complex.
                 </p>
             </div>
+            </div>
         </section>
         <p>Agnes Caroline Thaarup Obel is a Danish singer/songwriter. Her first album, Philharmonics, was released by <a href="#">PIAS Recordings</a> on 4 October 2010 in Europe. Philharmonics was certified gold in June 2011 by the <a href="#">Belgian Entertainment Association (BEA)</a> for sales of 10,000 Copies.</p></div>`.trim();
+
 
   root.innerHTML = template;
 

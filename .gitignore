@@ -7,6 +7,9 @@ node_modules
 /coverage
 /.nyc_output
 
+# styling
+/src/**/*.css
+/src/**/*.css.map
 
 # production
 /public

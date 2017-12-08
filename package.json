@@ -1,14 +1,19 @@
 {
-  "name": "node-express",
-  "version": "0.0.0",
+  "name": "tab-widget",
+  "version": "0.0.1",
+  "author": "Craig Spara",
+  "email": "craig@craigspara.com",
+  "repository": "",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "pm2 start ./bin/www --watch",
     "poststart": "pm2 logs",
     "stop": "pm2 delete all && pm2 flush",
     "test": "mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
-    "test2": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --watch --require babel-polyfill --require babel-register",
     "coverage": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --require babel-polyfill --require babel-register",
+    "compile": "node-sass ./src/stylesheets -o ./src/stylesheets --source-map true -w",
+    "postcss": "postcss ./src/stylesheets/*.css -d ./public/stylesheets -w",
     "webpack": "webpack -wd",
     "build": "babel src -d build"
   },
@@ -39,6 +44,10 @@
       "lcov"
     ]
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "dependencies": {
     "babel-cli": "6.26.0",
     "babel-loader": "7.1.2",
@@ -53,6 +62,7 @@
     "express": "~4.16.2",
     "istanbul": "0.4.5",
     "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0",
     "pm2": "2.7.2",
     "serve-favicon": "~2.4.5",
     "webpack": "3.8.1"
@@ -65,8 +75,19 @@
     "jsdom": "11.3.0",
     "jsdom-global": "3.0.2",
     "mocha": "4.0.1",
-    "node-sass-middleware": "0.11.0",
+    "node-sass": "4.7.2",
+    "normalize-scss": "7.0.0",
     "nyc": "11.3.0",
+    "postcss": "6.0.14",
+    "postcss-browser-reporter": "0.5.0",
+    "postcss-cli": "4.1.1",
+    "postcss-cssnext": "3.0.2",
+    "postcss-custom-properties": "6.2.0",
+    "postcss-import": "11.0.0",
+    "postcss-reporter": "5.0.0",
+    "postcss-selector-not": "3.0.1",
+    "postcss-url": "7.3.0",
+    "sass": "1.0.0-beta.3",
     "sinon": "4.1.2"
   }
 }
