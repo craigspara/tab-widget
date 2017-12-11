@@ -28,7 +28,6 @@ app.use(cookieParser());
 //   sourceMap: true,
 //   debug: true
 // }));
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
