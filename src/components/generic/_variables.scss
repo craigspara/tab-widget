@@ -1,3 +1,7 @@
 :root {
-  --blue: blue;
+  --site-background: rgb(180,180,180);
+  --active-tab-background: rgb(255,255,255);
+  --inactive-tab-background: rgb(100,100,100);
+  --active-panel-background: var(--active-tab-background);
+  --default-tabpanel-padding: 3em;
 }
