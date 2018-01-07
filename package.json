@@ -14,8 +14,8 @@
     "coverage": "nyc --reporter=html --reporter=text mocha './test/**/*.test.js' --color --require babel-polyfill --require babel-register",
     "compile": "node-sass ./src/stylesheets -o ./src/stylesheets --source-map true -w",
     "postcss": "postcss ./src/stylesheets/*.css -d ./public/stylesheets -w",
-    "webpack": "webpack -wd",
-    "build": "babel src -d build"
+    "build-dev": "webpack -wd --config webpack.config.dev.js",
+    "build-prod": "webpack --config webpack.config.prod.js"
   },
   "babel": {
     "presets": [
