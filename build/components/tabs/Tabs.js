@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 class Tabs {
   constructor(tabSection) {
     this.tabSection = tabSection;
@@ -40,14 +45,14 @@ class Tabs {
     this.tablist.addEventListener('click', this.clickEventListener);
     this.tablist.addEventListener('keydown', this.keydownEventListener);
     this.tablist.addEventListener('keyup', this.keyupEventListener);
-    // this.tablist.addEventListener('focus', this.focusEventHandler)
+    this.tabSection.addEventListener('focus', this.focusEventHandler);
   }
 
-  clickEventListener(event)  {
+  clickEventListener(event) {
     const tab = event.target;
     this.activateTab(tab);
-    this.reportFocusStatus(event);
-  };
+    // this.reportFocusStatus(event);
+  }
 
   // Handle keydown on tabs
   keydownEventListener(event) {
@@ -76,7 +81,7 @@ class Tabs {
   }
 
   // Handle keyup on tabs
-  keyupEventListener (event) {
+  keyupEventListener(event) {
     // console.info('keyup event fired');
     const key = event.which;
 
@@ -86,7 +91,7 @@ class Tabs {
         this.determineOrientation(event);
         break;
     }
-    this.reportFocusStatus(event);
+    // this.reportFocusStatus(event);
   }
 
   focusEventHandler(event) {
@@ -94,7 +99,7 @@ class Tabs {
     // console.info('focus event fired');
     // const target = event.target;
     // setTimeout(this.checkTabFocus, this.delay, target);
-  };
+  }
 
   // When a tablist's aria-orientation is set to vertical,
   // only up and down arrow should function.
@@ -102,7 +107,7 @@ class Tabs {
   determineOrientation(event) {
     console.info('determine orientation fired');
     const key = event.which;
-    let vertical = (this.orientation === 'vertical') || false;
+    let vertical = this.orientation === 'vertical' || false;
     let proceed = false;
 
     if (vertical) {
@@ -110,8 +115,7 @@ class Tabs {
         event.preventDefault();
         proceed = true;
       }
-    }
-    else {
+    } else {
       if (key === this.keys.left || key === this.keys.right) {
         proceed = true;
       }
@@ -124,15 +128,14 @@ class Tabs {
 
   activateTab(activeTab) {
     for (const tab of this.tabs) {
-      const {id, 'aria-selected': ariaSelected, 'aria-controls': ariaControls} = tab.attributes;
+      const { id, 'aria-selected': ariaSelected, 'aria-controls': ariaControls } = tab.attributes;
       // ariaSelected.value = (activeTab === tab);
       if (activeTab === tab) {
         tab.focus();
         ariaSelected.value = true;
         // Remove tabindex attribute
         tab.removeAttribute('tabindex');
-      }
-      else {
+      } else {
         tab.blur();
         ariaSelected.value = false;
         tab.setAttribute('tabindex', '-1');
@@ -146,13 +149,12 @@ class Tabs {
     const ariaControls = activeTab.attributes['aria-controls'].value;
     for (const panel of this.panels) {
 
-      const {id, 'aria-expanded': ariaExpanded} = panel.attributes;
+      const { id, 'aria-expanded': ariaExpanded } = panel.attributes;
       // ariaExpanded.value = (id.value === activeTab.attributes['aria-controls'].value);
 
       if (id.value === ariaControls) {
         ariaExpanded.value = true;
         panel.removeAttribute('hidden');
-
       } else {
         ariaExpanded.value = false;
         panel.setAttribute('hidden', 'hidden');
@@ -175,7 +177,7 @@ class Tabs {
       // console.info(index);
 
       if (!Number.isNaN(index)) {
-        const newTarget = this.tabs[((index + direction) + tablistLength) % tablistLength];
+        const newTarget = this.tabs[(index + direction + tablistLength) % tablistLength];
         newTarget.focus();
 
         // console.dir(newTarget);
@@ -185,14 +187,14 @@ class Tabs {
   }
 
   // Make a guess
-/*  focusFirstTab() {
-    this.tabs[0].focus();
-  };*/
+  /*  focusFirstTab() {
+      this.tabs[0].focus();
+    };*/
 
   // Make a guess
-/*  focusLastTab() {
-    this.tabs[this.tabs.length - 1].focus();
-  };*/
+  /*  focusLastTab() {
+      this.tabs[this.tabs.length - 1].focus();
+    };*/
 
   static getActiveElement() {
     return document.activeElement;
@@ -209,21 +211,21 @@ class Tabs {
   // TODO: Trap focus in active panel if focusable elements are present
   // debugging
   reportFocusStatus(event) {
-    console.info(`activeElement: ${document.activeElement}`);
-      if (event) {
-        console.info(event);
-      }
-      for (const tab of this.tabs) {
-        console.log(tab);
-          console.info(`tab ${tab.id}: aria-selected: ${tab.getAttribute('aria-selected')}`);
-      }
-      console.info(`*********`);
-
-      for (const panel of this.panels) {
-        console.log(panel);
-          console.info(`panel ${panel.id}: aria-expanded: ${panel.getAttribute('aria-expanded')}`);
-      }
-      console.info(`_________________`);
+    // console.info(`activeElement: ${document.activeElement}`);
+    console.dir(document.activeElement);
+    /*if (event) {
+      console.info(event);
+    }
+    for (const tab of this.tabs) {
+      console.log(tab);
+        console.info(`tab ${tab.id}: aria-selected: ${tab.getAttribute('aria-selected')}`);
+    }
+    console.info(`*********`);
+     for (const panel of this.panels) {
+      console.log(panel);
+        console.info(`panel ${panel.id}: aria-expanded: ${panel.getAttribute('aria-expanded')}`);
+    }
+    console.info(`_________________`);*/
   }
 
   // debugging: Add to function to report focused tab and panel
@@ -231,4 +233,4 @@ class Tabs {
 
 }
 
-export default Tabs;
+exports.default = Tabs;
