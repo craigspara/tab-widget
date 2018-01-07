@@ -15,6 +15,7 @@
     "compile": "node-sass ./src/stylesheets -o ./src/stylesheets --source-map true -w",
     "postcss": "postcss ./src/stylesheets/*.css -d ./public/stylesheets -w",
     "build-dev": "webpack -wd --config webpack.config.dev.js",
+    "prebuild-prod": "postcss ./src/stylesheets/*.css -d ./docs/stylesheets",
     "build-prod": "webpack --config webpack.config.prod.js"
   },
   "babel": {
